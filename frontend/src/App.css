@@ -84,10 +84,36 @@ table {
     margin-bottom: 20px;
     display: flex;
     justify-content: flex-end;
+    position: relative;
+    /* For icon positioning */
+}
+
+.search-icon {
+    position: absolute;
+    right: 285px;
+    /* Position inside the input */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: #888;
+    pointer-events: none;
+    /* Let clicks pass through to input */
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+/* Adjust icon position when input expands or is focused */
+.search-bar-container:hover .search-icon,
+.search-input:focus+.search-icon {
+    right: 335px;
+    /* Matches the width expansion difference roughly */
+    color: #4158d0;
 }
 
 .search-input {
-    padding: 12px 15px;
+    padding: 12px 15px 12px 40px;
+    /* Extra left padding for icon */
     width: 300px;
     border: 1px solid #ddd;
     border-radius: 50px;
@@ -101,6 +127,36 @@ table {
     width: 350px;
     border-color: #4158d0;
     box-shadow: 0 5px 15px rgba(65, 88, 208, 0.2);
+}
+
+/* Fix icon position for dynamic width - actually better to put icon on left and align input right? */
+/* Let's try a different approach for robust positioning: 
+   The input expands to the left or right? 
+   Just use flexbox relative positioning if possible, or simple absolute left.
+*/
+.search-bar-container {
+    position: relative;
+    display: inline-block;
+    /* Or flex but careful with widths */
+    margin-left: auto;
+    /* Push to right if in flex container */
+    align-self: flex-end;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: #888;
+    z-index: 2;
+}
+
+.search-input:focus~.search-icon {
+    color: #4158d0;
 }
 
 thead {

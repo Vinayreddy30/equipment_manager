@@ -54,6 +54,20 @@ function App() {
         <div className="container">
             <h1>Equipment Manager</h1>
 
+            <div className="search-bar-container">
+                <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input
+                    type="text"
+                    className="search-input"
+                    placeholder="Search equipment..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+            </div>
+
             <form onSubmit={handleSubmit} className="equipment-form">
                 <input type="text" placeholder="Equipment Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
                 <select
@@ -95,15 +109,7 @@ function App() {
                 <button type="submit">{editingId ? 'Update' : 'Add'} Equipment</button>
             </form>
 
-            <div className="search-bar-container">
-                <input
-                    type="text"
-                    className="search-input"
-                    placeholder="Search equipment..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-            </div>
+
 
             <table>
                 <thead>

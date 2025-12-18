@@ -1,0 +1,54 @@
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    font-family: sans-serif;
+}
+
+.equipment-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.equipment-form input,
+.equipment-form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+button {
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.status-active {
+    color: green;
+    font-weight: bold;
+}
+
+.status-inactive {
+    color: red;
+}
+
+.status-under-maintenance {
+    color: orange;
+}

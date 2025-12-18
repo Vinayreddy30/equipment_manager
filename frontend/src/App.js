@@ -9,6 +9,8 @@ function App() {
     const [formData, setFormData] = useState({ name: '', type: '', status: '', lastCleaned: '' });
     const [editingId, setEditingId] = useState(null);
 
+    const [searchTerm, setSearchTerm] = useState('');
+
     useEffect(() => { fetchEquipment(); }, []);
 
     const fetchEquipment = async () => {
@@ -41,6 +43,12 @@ function App() {
             fetchEquipment();
         }
     };
+
+    const filteredEquipment = equipment.filter(item =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.status.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <div className="container">
@@ -87,6 +95,16 @@ function App() {
                 <button type="submit">{editingId ? 'Update' : 'Add'} Equipment</button>
             </form>
 
+            <div className="search-bar-container">
+                <input
+                    type="text"
+                    className="search-input"
+                    placeholder="Search equipment..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+            </div>
+
             <table>
                 <thead>
                     <tr>
@@ -94,7 +112,7 @@ function App() {
                     </tr>
                 </thead>
                 <tbody>
-                    {equipment.map(item => (
+                    {filteredEquipment.map(item => (
                         <tr key={item.id}>
                             <td>{item.name}</td>
                             <td>{item.type}</td>

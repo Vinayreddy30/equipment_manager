@@ -79,6 +79,30 @@ table {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
+/* Search Bar */
+.search-bar-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-input {
+    padding: 12px 15px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    outline: none;
+    transition: all 0.3s;
+    font-size: 14px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.search-input:focus {
+    width: 350px;
+    border-color: #4158d0;
+    box-shadow: 0 5px 15px rgba(65, 88, 208, 0.2);
+}
+
 thead {
     background-color: #36304a;
     color: #fff;
